@@ -19,7 +19,7 @@ export function Toolbar({ onPrint, onDownload, onShare, onReset, busy, shareSupp
         <button
           type="button"
           onClick={onReset}
-          className="hidden items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 sm:flex"
+          className="flex items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50"
         >
           <RotateCcw size={14} />
           Reset
@@ -27,7 +27,7 @@ export function Toolbar({ onPrint, onDownload, onShare, onReset, busy, shareSupp
         <button
           type="button"
           onClick={onPrint}
-          className="flex items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50"
+          className="hidden items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 sm:flex"
         >
           <Printer size={14} />
           Print
@@ -37,7 +37,7 @@ export function Toolbar({ onPrint, onDownload, onShare, onReset, busy, shareSupp
             type="button"
             onClick={onShare}
             disabled={busy}
-            className="hidden items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 sm:flex"
+            className="flex items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50"
           >
             <Share2 size={14} />
             Share
@@ -47,10 +47,12 @@ export function Toolbar({ onPrint, onDownload, onShare, onReset, busy, shareSupp
           type="button"
           onClick={onDownload}
           disabled={busy}
-          className="flex items-center gap-1.5 rounded-md bg-teal-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-teal-800 disabled:opacity-50"
+          aria-label={busy ? 'Generating PDF' : 'Download PDF'}
+          title={busy ? 'Generating PDF' : 'Download PDF'}
+          className="flex items-center justify-center rounded-md bg-teal-700 p-2 text-sm font-medium text-white hover:bg-teal-800 disabled:opacity-50 sm:gap-1.5 sm:px-3 sm:py-1.5"
         >
           <Download size={14} />
-          {busy ? 'Generating…' : 'Download PDF'}
+          <span className="hidden sm:inline">{busy ? 'Generating…' : 'Download PDF'}</span>
         </button>
       </div>
     </div>
