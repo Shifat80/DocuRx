@@ -1,0 +1,334 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================
+   PRESCRIPTION PAD — ported design, Letter portrait, 0 margin
+   ========================================================== */
+@page {
+  size: Letter portrait;
+  margin: 0;
+}
+
+:root {
+  --green: #1c6b3a;
+  --red: #c31c1c;
+  --navy: #1a2f66;
+  --teal: #0f6e6e;
+  --wm-a: rgba(34, 193, 195, 0.35);
+  --wm-b: rgba(253, 187, 45, 0.35);
+}
+
+.prescription-page,
+.prescription-page * {
+  box-sizing: border-box;
+}
+
+.prescription-page {
+  font-family: 'Anek Bangla', 'Noto Sans Bengali', Arial, sans-serif;
+  font-weight: 500;
+  color: #111;
+  width: 8.5in;
+  height: 11in;
+  background: linear-gradient(0deg, var(--wm-a) 0%, var(--wm-b) 100%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.18);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.15in;
+  padding: 0.2in 0.4in;
+  border-bottom: 2.5px solid var(--navy);
+}
+
+.doctor-block {
+  flex: 1 1 0;
+  line-height: 1.42;
+}
+
+.doctor-block.bn {
+  text-align: left;
+  font-size: 11.5pt;
+}
+
+.doctor-block.en {
+  text-align: right;
+  font-size: 10.5pt;
+}
+
+.doctor-name {
+  font-weight: 800;
+  font-size: 15pt;
+  color: var(--green);
+  margin: 0 0 3px 0;
+}
+
+.doctor-block.en .doctor-name {
+  font-size: 13.5pt;
+}
+
+.doctor-block p {
+  margin: 0 0 1px 0;
+  font-weight: 700;
+}
+
+.doctor-block .hospital-line {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.doctor-block .reg-line {
+  color: #111;
+  font-weight: 700;
+}
+
+.logo-block {
+  flex: 0 0 2.3in;
+  min-height: 0.85in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.logo-block .logo-img {
+  width: 2.2in;
+  height: 0.62in;
+  object-fit: contain;
+}
+
+.logo-block .logo-placeholder {
+  width: 2.2in;
+  height: 0.62in;
+}
+
+.logo-block .expertise-line {
+  margin: 0.04in 0 0;
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: var(--green);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ---------- PATIENT ROW ---------- */
+.patient-row {
+  display: flex;
+  border: 1.2px solid #111;
+  border-top: none;
+  margin-top: -1px;
+  background: #ffffff;
+}
+
+.patient-field {
+  flex: 1 1 0;
+  padding: 0.09in 0.12in;
+  font-size: 11pt;
+  font-weight: 700;
+  border-left: 1.2px solid #111;
+  white-space: nowrap;
+  display: flex;
+  align-items: baseline;
+  gap: 0.06in;
+  overflow: hidden;
+}
+
+.patient-field:first-child {
+  border-left: none;
+  flex: 1.3 1 0;
+  padding-left: 0.4in;
+}
+
+.patient-field.date-field {
+  flex: 0.85 1 0;
+  padding-right: 0.4in;
+}
+
+/* ---------- MAIN AREA ---------- */
+.main-area {
+  flex: 1 1 auto;
+  display: flex;
+  border: 1.2px solid #111;
+  border-top: none;
+  overflow: hidden;
+}
+
+.left-panel {
+  flex: 0 0 42%;
+  border-right: 1.2px solid #111;
+  padding: 0.14in 0.16in 0.14in 0.4in;
+  display: flex;
+  flex-direction: column;
+  font-size: 10.5pt;
+}
+
+.right-panel {
+  flex: 1 1 auto;
+  padding: 0.14in 0.4in 0.14in 0.18in;
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.rx-mark {
+  font-size: 32pt;
+  font-weight: 700;
+  color: var(--navy);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  margin: 0 0 0.15in 0;
+}
+
+.rx-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 10.5pt;
+}
+
+.rx-item {
+  display: flex;
+  gap: 0.08in;
+  margin-bottom: 0.14in;
+  align-items: baseline;
+}
+
+.rx-index {
+  font-weight: 700;
+  color: var(--navy);
+  flex: 0 0 auto;
+}
+
+.rx-item-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.rx-medicine {
+  font-weight: 700;
+}
+
+.rx-meta {
+  font-size: 9pt;
+  color: #333;
+}
+
+/* ---------- left panel field rows ---------- */
+.field-line {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0.11in;
+}
+
+.field-label {
+  font-weight: 700;
+  white-space: nowrap;
+  margin-right: 0.08in;
+}
+
+.field-blank {
+  flex: 1 1 auto;
+  height: 0.16in;
+  font-weight: 500;
+}
+
+.cc-block {
+  margin-bottom: 0.16in;
+}
+
+.cc-block .field-label {
+  display: block;
+  margin-bottom: 0.06in;
+}
+
+.cc-writing-area {
+  height: 0.85in;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.vitals-group {
+  margin-top: 0.02in;
+}
+
+.spacer-line {
+  flex: 1;
+}
+
+.dx-adv-group {
+  margin-top: 0.1in;
+}
+
+.dx-adv-group .field-blank {
+  height: 0.5in;
+  align-self: flex-start;
+}
+
+.dx-adv-group .field-line {
+  align-items: flex-start;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  border: 1.2px solid #111;
+  border-top: none;
+  padding: 0.14in 0.4in;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.footer .chamber-title {
+  font-weight: 700;
+  font-size: 11pt;
+  margin: 0 0 2px 0;
+  color: var(--red);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 700;
+}
+
+.footer .addr-line {
+  color: var(--teal);
+}
+
+.footer .mobile-line {
+  color: #111;
+}
+
+/* ==========================================================
+   PRINT — only the pad is shown, at true Letter size
+   ========================================================== */
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    margin: 0;
+    padding: 0;
+    height: auto;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .preview-scale-wrapper {
+    transform: none !important;
+    height: auto !important;
+  }
+
+  .prescription-page {
+    box-shadow: none;
+  }
+}
