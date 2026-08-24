@@ -11,16 +11,15 @@ interface ToolbarProps {
 
 export function Toolbar({ onPrint, onDownload, onShare, onReset, busy, shareSupported }: ToolbarProps) {
   return (
-    <div className="no-print flex items-center justify-between gap-2 border-b border-slate-200 bg-white px-6 py-3">
+    <div className="no-print flex items-center justify-between gap-2 border-b border-slate-200 bg-white px-4 py-3 sm:px-6">
       <div>
-        <h1 className="text-sm font-semibold text-slate-800">DocuRx — Prescription Pad</h1>
-        <p className="text-xs text-slate-400">Live preview updates as you type</p>
+        <h1 className="text-sm font-semibold text-slate-800">DocuRx</h1>
       </div>
       <div className="flex items-center gap-2">
         <button
           type="button"
           onClick={onReset}
-          className="flex items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50"
+          className="hidden items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 sm:flex"
         >
           <RotateCcw size={14} />
           Reset
@@ -38,7 +37,7 @@ export function Toolbar({ onPrint, onDownload, onShare, onReset, busy, shareSupp
             type="button"
             onClick={onShare}
             disabled={busy}
-            className="flex items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50"
+            className="hidden items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 sm:flex"
           >
             <Share2 size={14} />
             Share
